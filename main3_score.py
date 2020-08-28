@@ -26,9 +26,7 @@ answer = ''
 def getRandom(num):
     return randint(0,num)
 
-def getImage():
-    # access global variable answer
-    global answer
+def getNew():
     # randomly select either ricks list or sticks list
     if getRandom(1) == 1:
         # randomly select one of the 6 stick images
@@ -38,13 +36,13 @@ def getImage():
         # randomly select one of the 5 rick images
         image = ricks[getRandom(4)]
         answer = 'Rick'
-    return image
-
+    return (image, answer)
+image, answer = getNew()
 # DEFINE THE LAYOUT
 layout = [
             [sg.Text('Is this a Rick or a Stick?')],
             [sg.Text('Score: '), sg.Text(score, key='score')],
-            [sg.Image(filename=getImage(), key='current_image', size=(300,400))],
+            [sg.Image(filename=image, key='current_image', size=(300,400))],
             [sg.Button('Rick'), sg.Button('Stick'), sg.Button('Exit')]
 ]
 
@@ -70,7 +68,8 @@ while True:
                 break
             print(f'new score {score}')
             window['score'].update(score)
-            window['current_image'].update(filename=getImage(), size=(300,400))
+            image, answer = getNew()
+            window['current_image'].update(filename=image, size=(300,400))
         else:
             print('Incorrect. No Change to score')
             window['current_image'].update(filename=getImage(), size=(300,400))
