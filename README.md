@@ -6,7 +6,6 @@ This program displays a picture, and asks the user to identify if the picture sh
 
 ## your task
 1. Finish this game by creating a score counter. Once the score is 5 the game should end and a congratulations message displayed (popup)
-2. Create a leaderboard. Implement this using SQLite. *Hint:* you will need the user to input their name. The database should store their name and their final score. 
 
 ## credits
 Thanks to [David Venturi](https://www.youtube.com/watch?v=_AedKbdMtcU) for this idea
